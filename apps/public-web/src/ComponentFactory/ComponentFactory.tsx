@@ -13,8 +13,8 @@ type ComponentEntry = [any, boolean];
 // Initialize the components map with the defined type.
 const components: Map<string, ComponentEntry> = new Map([
   ['ComponentContentPageHero', [ContentPageHero, false]],
-  ['ComponentContentCallToAction', [CallToAction, false]],
-  ['ComponentContentBlogListing', [BlogList, true]],
+  // ['ComponentContentCallToAction', [CallToAction, false]],
+  // ['ComponentContentBlogListing', [BlogList, true]],
 ]);
 
 /**

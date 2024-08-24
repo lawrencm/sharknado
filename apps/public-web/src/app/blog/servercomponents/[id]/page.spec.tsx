@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import SeedBlogData from './SeedBlogData';
+import BlogDetail from './page';
 
-describe('SeedBlogData', () => {
+describe('BlogDetail', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<SeedBlogData />);
+    const { baseElement } = render(<BlogDetail params={{ id: '1' }} />);
     expect(baseElement).toBeTruthy();
   });
 });

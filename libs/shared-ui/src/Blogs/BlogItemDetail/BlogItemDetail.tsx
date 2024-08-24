@@ -1,33 +1,24 @@
-import {
-  BlogPostDetailDocument,
-  BlogPostDetailQuery,
-  BlogPostDetailQueryVariables,
-} from '@sharknado/cms-api';
-import styles from './BlogItemDetail.module.css';
-import { DocumentNode } from 'graphql';
+import Markdown from 'react-markdown';
 
 interface BlogItemDetailProps {
-  id?: string | null;
+  title?: string | null;
+  description?: string | null;
+  author?: string | null;
+  body?: string | null;
 }
 
-export async function BlogItemDetail({ id }: BlogItemDetailProps) {
-  // const { data } = await getClient().query<
-  //   BlogPostDetailQuery,
-  //   BlogPostDetailQueryVariables
-  // >({
-  //   query: BlogPostDetailDocument as DocumentNode,
-  //   variables: {
-  //     id: id,
-  //   },
-  // });
-
+export function BlogItemDetail({
+  title,
+  description,
+  author,
+  body,
+}: BlogItemDetailProps) {
   return (
     <div className={'container prose'}>
-      <a href="/blog">Back to Blog</a>
-      {/* <h1 className="my-8">{data.blogpost?.data?.attributes?.title}</h1>
-      <p>{data.blogpost?.data?.attributes?.description}</p> */}
+      <h1 className="mt-8">{title}</h1>
+      <p className="text-sm text-gray-500">{author}</p>
+      <p className="font-bold">{description}</p>
+      <Markdown>{body}</Markdown>
     </div>
   );
 }
-
-export default BlogItemDetail;

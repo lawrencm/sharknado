@@ -11,7 +11,7 @@ import {
 } from '@sharknado/cms-api';
 import { DocumentNode } from 'graphql';
 import DynamicComponentRenderer from './DynamicComponentRenderer';
-import { getClient } from './client';
+import { getClient } from '../CMSClient/client';
 
 interface DynamicPageContentProps {
   pageId: string;

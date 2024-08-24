@@ -13,7 +13,7 @@
 
 import React, { FC, Suspense } from 'react';
 import { componentFactory, ComponentProps } from './ComponentFactory';
-import { ApolloWrapper } from './ApolloWrapper';
+import { ApolloWrapper } from '../CMSClient/ApolloWrapper';
 
 type Props = {
   typeName: string;

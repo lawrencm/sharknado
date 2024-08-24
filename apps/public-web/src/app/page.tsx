@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { DynamicPageContent } from '../ComponentFactory/DynamicPageContent';
 
 export default function Index() {
   /*
@@ -7,17 +8,35 @@ export default function Index() {
    * Note: The corresponding styles are in the ./index.tailwind file.
    */
   return (
-    <div className="wrapper">
-      <div className="container mx-auto prose">
-        <h2 className="my-8">List of Examples</h2>
+    <>
+      <DynamicPageContent pageId="1" />
 
-        <div>
-          <Link className="text-xl" href="/blog">
-            Blogs Example
-          </Link>
-          <p>Simple master detail demo using dynaimc routes.</p>
+      <div className="wrapper pt-16">
+        <div className="container mx-auto prose">
+          <h1>Welcome to Sharknado Showdown</h1>
+          <h2 className="my-8">List of Examples</h2>
+
+          <div>
+            <Link className="text-xl" href="/blog/servercomponents">
+              Blogs Example (Server Components)
+            </Link>
+            <p>
+              Simple master detail demo using dynaimc routes and server
+              components.
+            </p>
+          </div>
+
+          <div>
+            <Link className="text-xl" href="/blog/clientcomponents">
+              Blogs Example (Client Components)
+            </Link>
+            <p>
+              Simple master detail demo using dynaimc routes and client
+              components.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

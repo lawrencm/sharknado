@@ -15,11 +15,20 @@ const ContentPageHero = function ({
         backgroundImage: `url(${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${background_image?.data?.attributes?.url})`,
       }}
     >
-      <div className="absolute inset-0 bg-black opacity-50"></div>
+      {/*  background gradient */}
+      <div
+        className="absolute inset-0 
+      
+      bg-gradient-to-t from-slate-900/30 via-slate-900/50 to-slate-900
+      
+      "
+      ></div>
       <div className="relative z-10">
-        <h1 className="text-4xl md:text-5xl font-bold text-white">{title}</h1>
-        <p className="mt-2 text-lg md:text-xl text-gray-200">{subtitle}</p>
-        <p className="my-8 text-white">{text}</p>
+        <p className="mt-2 text-sm md:text-sm text-gray-200">{subtitle}</p>
+        <h1 className="text-4xl md:text-5xl uppercase font-bold text-white">
+          {title}
+        </h1>
+        <p className="my-8 max-w-[800px]  text-white">{text}</p>
         {buttons?.map((button, idx) => (
           <Button
             key={idx}
