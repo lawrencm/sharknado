@@ -1,4 +1,15 @@
+import { config } from 'process';
+import { gql } from '@apollo/client';
+
 export default () => ({
+  navigation: {
+    enabled: true,
+    config: {
+      gql: {
+        navigationItemRelated: ['Pages'],
+      },
+    },
+  },
   graphql: {
     enabled: true,
     config: {
@@ -6,6 +17,7 @@ export default () => ({
       playgroundAlways: false,
     },
   },
+
   'apollo-sandbox': {
     // enables the plugin only in development mode
     // if you also want to use it in production, set this to true

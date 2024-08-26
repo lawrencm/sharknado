@@ -1,0 +1,32 @@
+{
+  "kind": "singleType",
+  "collectionName": "global_top_navigations",
+  "info": {
+    "singularName": "global-top-navigation",
+    "pluralName": "global-top-navigations",
+    "displayName": "Global top Navigation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "logo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "Links": {
+      "displayName": "Link",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.link"
+    }
+  }
+}

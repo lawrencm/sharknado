@@ -1,5 +1,18 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface ElementsLink extends Schema.Component {
+  collectionName: 'components_elements_links';
+  info: {
+    displayName: 'Link';
+    icon: 'link';
+    description: '';
+  };
+  attributes: {
+    label: Attribute.String;
+    ffff: Attribute.Blocks;
+  };
+}
+
 export interface ElementsButton extends Schema.Component {
   collectionName: 'components_elements_buttons';
   info: {
@@ -63,6 +76,7 @@ export interface ContentBlogListing extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'elements.link': ElementsLink;
       'elements.button': ElementsButton;
       'content.page-hero': ContentPageHero;
       'content.call-to-action': ContentCallToAction;

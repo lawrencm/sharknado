@@ -7,6 +7,14 @@
   "targets": {
     "add-component": {
       "executor": "@nx-extend/shadcn-ui:add"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/shared-ui"],
+      "options": {
+        "jestConfig": "libs/shared-ui/jest.config.ts",
+        "passWithNoTests": true
+      }
     }
   }
 }

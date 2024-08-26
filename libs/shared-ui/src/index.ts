@@ -15,4 +15,4 @@ export * from './avatar';
 export * from './tabs';
 export * from './switch';
 export * from './Auth/UseProfilePanel';
-export { ContentPageHero } from './ContentPageHero/ContentPageHero';
+export * from './ContentPageHero/ContentPageHero';

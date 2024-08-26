@@ -1,0 +1,15 @@
+query GlobalHeaderNavigation {
+  renderNavigation(navigationIdOrSlug: "1", menuOnly: true) {
+    id
+    title
+    related {
+      id
+    }
+    path
+    logo {
+      name
+      url
+    }
+    position
+  }
+}

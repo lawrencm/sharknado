@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/cms/src",
+  "tags": [],
   "targets": {
     "serve": {
       "executor": "@nx-extend/strapi:serve",
@@ -21,6 +22,5 @@
         }
       }
     }
-  },
-  "tags": []
+  }
 }

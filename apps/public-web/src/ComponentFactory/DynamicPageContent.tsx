@@ -10,8 +10,10 @@ import {
   PageQueryVariables,
 } from '@sharknado/cms-api';
 import { DocumentNode } from 'graphql';
-import DynamicComponentRenderer from './DynamicComponentRenderer';
+import { ApolloWrapper } from '../CMSClient/ApolloWrapper';
 import { getClient } from '../CMSClient/client';
+import GlobalTopNav from '../components/GlobalTopNav/GlobalTopNav';
+import DynamicComponentRenderer from './DynamicComponentRenderer';
 
 interface DynamicPageContentProps {
   pageId: string;
@@ -27,15 +29,32 @@ const DynamicPageContent = async ({ pageId }: DynamicPageContentProps) => {
 
   return (
     <div>
-      {bodyComponents?.map((comp, idx) =>
-        comp ? (
+      {bodyComponents?.map((comp, idx) => {
+        if (comp?.__typename === 'ComponentContentPageHero') {
+          return comp ? (
+            <DynamicComponentRenderer
+              key={comp.__typename ? `${comp.__typename}-${idx}` : idx}
+              typeName={comp.__typename ?? ''}
+              componentProps={{
+                ...comp,
+                navigation: (
+                  <ApolloWrapper>
+                    <GlobalTopNav />
+                  </ApolloWrapper>
+                ),
+              }}
+            />
+          ) : null;
+        }
+
+        return comp ? (
           <DynamicComponentRenderer
             key={comp.__typename ? `${comp.__typename}-${idx}` : idx}
             typeName={comp.__typename ?? ''}
             componentProps={comp}
           />
-        ) : null
-      )}
+        ) : null;
+      })}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { BlogList, CallToAction, ContentPageHero } from '@sharknado/shared-ui';
+import { ContentPageHero } from '@sharknado/shared-ui';
 
 // Define a specific type for component props, which can be extended as needed.
 export type ComponentProps = {

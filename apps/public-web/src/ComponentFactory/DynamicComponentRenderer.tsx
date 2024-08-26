@@ -11,9 +11,9 @@
  * - componentProps: The properties to pass to the rendered component.
  */
 
-import React, { FC, Suspense } from 'react';
-import { componentFactory, ComponentProps } from './ComponentFactory';
+import { FC } from 'react';
 import { ApolloWrapper } from '../CMSClient/ApolloWrapper';
+import { componentFactory, ComponentProps } from './ComponentFactory';
 
 type Props = {
   typeName: string;

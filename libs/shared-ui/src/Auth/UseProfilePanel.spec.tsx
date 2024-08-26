@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
-
-import UseProfilePanel from './UseProfilePanel';
+import '@testing-library/jest-dom/extend-expect';
+import { UseProfilePanel } from './UseProfilePanel';
+import React from 'react';
 
 describe('UseProfilePanel', () => {
   it('should render successfully', () => {
