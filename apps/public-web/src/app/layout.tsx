@@ -1,4 +1,6 @@
+import { draftMode } from 'next/headers';
 import './global.css';
+import { ExitDraftButton } from '@sharknado/shared-ui';
 
 export const metadata = {
   title: 'Welcome to Sharknado Showdown',
@@ -10,9 +12,21 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const draftModeEnabled = draftMode().isEnabled;
+
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {/* create a yellow banner at top alerting that this is in draft mode */}
+        {draftModeEnabled && (
+          <div className="bg-yellow text-black p-2 text-center flex flex-row align-middle justify-center items-center">
+            <p className="mr-4">This site is in draft mode</p>
+            <ExitDraftButton />
+          </div>
+        )}
+
+        {children}
+      </body>
     </html>
   );
 }

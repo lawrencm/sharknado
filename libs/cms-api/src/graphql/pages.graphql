@@ -66,3 +66,48 @@ query Page($id: ID) {
     }
   }
 }
+
+query PagesBySlug($slug: String, $publicationState: PublicationState) {
+  pages(
+    filters: { slug: { eq: $slug } }
+    pagination: { page: 1, pageSize: 1 }
+    publicationState: $publicationState
+  ) {
+    data {
+      attributes {
+        title
+        body {
+          ... on ComponentContentPageHero {
+            id
+            title
+            subtitle
+            text
+            background_image {
+              data {
+                id
+                attributes {
+                  name
+                  alternativeText
+                  caption
+                  url
+                }
+              }
+            }
+            buttons {
+              id
+              label
+              variant
+              url
+              open_in_new_window
+            }
+          }
+        }
+        slug
+        createdAt
+        updatedAt
+        publishedAt
+      }
+      id
+    }
+  }
+}

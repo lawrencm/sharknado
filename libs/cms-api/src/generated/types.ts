@@ -614,7 +614,6 @@ export type MutationUploadArgs = {
 
 export type NavigationItem = {
   __typename?: 'NavigationItem';
-  audience?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   createdAt?: Maybe<Scalars['String']['output']>;
   createdBy?: Maybe<Scalars['String']['output']>;
   created_at?: Maybe<Scalars['String']['output']>;
@@ -622,13 +621,11 @@ export type NavigationItem = {
   externalPath?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   items?: Maybe<Array<Maybe<NavigationItem>>>;
-  logo?: Maybe<NavigationItemAdditionalFieldMedia>;
   master?: Maybe<Scalars['Int']['output']>;
   menuAttached: Scalars['Boolean']['output'];
   order: Scalars['Int']['output'];
   parent?: Maybe<NavigationItem>;
   path?: Maybe<Scalars['String']['output']>;
-  position?: Maybe<Scalars['String']['output']>;
   related?: Maybe<NavigationItemRelatedData>;
   title: Scalars['String']['output'];
   type: Scalars['String']['output'];
@@ -637,16 +634,6 @@ export type NavigationItem = {
   updatedBy?: Maybe<Scalars['String']['output']>;
   updated_at?: Maybe<Scalars['String']['output']>;
   updated_by?: Maybe<Scalars['String']['output']>;
-};
-
-export type NavigationItemAdditionalFieldMedia = {
-  __typename?: 'NavigationItemAdditionalFieldMedia';
-  height: Scalars['Int']['output'];
-  mime: Scalars['String']['output'];
-  name: Scalars['String']['output'];
-  previewUrl?: Maybe<Scalars['String']['output']>;
-  url: Scalars['String']['output'];
-  width: Scalars['Int']['output'];
 };
 
 export type NavigationItemRelated = Page;
@@ -666,10 +653,21 @@ export enum NavigationRenderType {
 export type Page = {
   __typename?: 'Page';
   body?: Maybe<Array<Maybe<PageBodyDynamicZone>>>;
+  children?: Maybe<PageRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
+  parent?: Maybe<PageEntityResponse>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type PageChildrenArgs = {
+  filters?: InputMaybe<PageFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type PageBodyDynamicZone = ComponentContentBlogListing | ComponentContentCallToAction | ComponentContentPageHero | Error;
@@ -693,19 +691,30 @@ export type PageEntityResponseCollection = {
 
 export type PageFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>;
+  children?: InputMaybe<PageFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<PageFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>;
+  parent?: InputMaybe<PageFiltersInput>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
+  slug?: InputMaybe<StringFilterInput>;
   title?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
 export type PageInput = {
   body?: InputMaybe<Array<Scalars['PageBodyDynamicZoneInput']['input']>>;
+  children?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  parent?: InputMaybe<Scalars['ID']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageRelationResponseCollection = {
+  __typename?: 'PageRelationResponseCollection';
+  data: Array<PageEntity>;
 };
 
 export type Pagination = {
@@ -1270,7 +1279,7 @@ export type UsersPermissionsUserRelationResponseCollection = {
 export type GlobalHeaderNavigationQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GlobalHeaderNavigationQuery = { __typename?: 'Query', renderNavigation: Array<{ __typename?: 'NavigationItem', id: number, title: string, path?: string | null, position?: string | null, related?: { __typename?: 'NavigationItemRelatedData', id: number } | null, logo?: { __typename?: 'NavigationItemAdditionalFieldMedia', name: string, url: string } | null } | null> };
+export type GlobalHeaderNavigationQuery = { __typename?: 'Query', renderNavigation: Array<{ __typename?: 'NavigationItem', id: number, title: string, path?: string | null, related?: { __typename?: 'NavigationItemRelatedData', id: number } | null } | null> };
 
 export type BlogpostsQueryVariables = Exact<{
   page?: InputMaybe<Scalars['Int']['input']>;
@@ -1306,6 +1315,14 @@ export type PageQueryVariables = Exact<{
 
 export type PageQuery = { __typename?: 'Query', page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, body?: Array<{ __typename?: 'ComponentContentBlogListing', id: string, view?: Enum_Componentcontentbloglisting_View | null, number_of_cols?: number | null, items_per_page?: number | null } | { __typename?: 'ComponentContentCallToAction', title?: string | null, subtitle?: string | null, text?: string | null, id: string, buttons?: Array<{ __typename?: 'ComponentElementsButton', id: string, label?: string | null, variant: Enum_Componentelementsbutton_Variant, url?: string | null, open_in_new_window?: boolean | null } | null> | null, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', alternativeText?: string | null, caption?: string | null, url: string, name: string } | null } | null } | null } | { __typename?: 'ComponentContentPageHero', id: string, title?: string | null, subtitle?: string | null, text?: string | null, background_image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, alternativeText?: string | null, caption?: string | null, url: string } | null } | null } | null, buttons?: Array<{ __typename?: 'ComponentElementsButton', id: string, label?: string | null, variant: Enum_Componentelementsbutton_Variant, url?: string | null, open_in_new_window?: boolean | null } | null> | null } | { __typename?: 'Error' } | null> | null } | null } | null } | null };
 
+export type PagesBySlugQueryVariables = Exact<{
+  slug?: InputMaybe<Scalars['String']['input']>;
+  publicationState?: InputMaybe<PublicationState>;
+}>;
+
+
+export type PagesBySlugQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, body?: Array<{ __typename?: 'ComponentContentBlogListing' } | { __typename?: 'ComponentContentCallToAction' } | { __typename?: 'ComponentContentPageHero', id: string, title?: string | null, subtitle?: string | null, text?: string | null, background_image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, alternativeText?: string | null, caption?: string | null, url: string } | null } | null } | null, buttons?: Array<{ __typename?: 'ComponentElementsButton', id: string, label?: string | null, variant: Enum_Componentelementsbutton_Variant, url?: string | null, open_in_new_window?: boolean | null } | null> | null } | { __typename?: 'Error' } | null> | null } | null }> } | null };
+
 
 export const GlobalHeaderNavigationDocument = gql`
     query GlobalHeaderNavigation {
@@ -1316,11 +1333,6 @@ export const GlobalHeaderNavigationDocument = gql`
       id
     }
     path
-    logo {
-      name
-      url
-    }
-    position
   }
 }
     `;
@@ -1618,3 +1630,83 @@ export type PageQueryHookResult = ReturnType<typeof usePageQuery>;
 export type PageLazyQueryHookResult = ReturnType<typeof usePageLazyQuery>;
 export type PageSuspenseQueryHookResult = ReturnType<typeof usePageSuspenseQuery>;
 export type PageQueryResult = Apollo.QueryResult<PageQuery, PageQueryVariables>;
+export const PagesBySlugDocument = gql`
+    query PagesBySlug($slug: String, $publicationState: PublicationState) {
+  pages(
+    filters: {slug: {eq: $slug}}
+    pagination: {page: 1, pageSize: 1}
+    publicationState: $publicationState
+  ) {
+    data {
+      attributes {
+        title
+        body {
+          ... on ComponentContentPageHero {
+            id
+            title
+            subtitle
+            text
+            background_image {
+              data {
+                id
+                attributes {
+                  name
+                  alternativeText
+                  caption
+                  url
+                }
+              }
+            }
+            buttons {
+              id
+              label
+              variant
+              url
+              open_in_new_window
+            }
+          }
+        }
+        slug
+        createdAt
+        updatedAt
+        publishedAt
+      }
+      id
+    }
+  }
+}
+    `;
+
+/**
+ * __usePagesBySlugQuery__
+ *
+ * To run a query within a React component, call `usePagesBySlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePagesBySlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePagesBySlugQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *      publicationState: // value for 'publicationState'
+ *   },
+ * });
+ */
+export function usePagesBySlugQuery(baseOptions?: Apollo.QueryHookOptions<PagesBySlugQuery, PagesBySlugQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<PagesBySlugQuery, PagesBySlugQueryVariables>(PagesBySlugDocument, options);
+      }
+export function usePagesBySlugLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PagesBySlugQuery, PagesBySlugQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<PagesBySlugQuery, PagesBySlugQueryVariables>(PagesBySlugDocument, options);
+        }
+export function usePagesBySlugSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<PagesBySlugQuery, PagesBySlugQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<PagesBySlugQuery, PagesBySlugQueryVariables>(PagesBySlugDocument, options);
+        }
+export type PagesBySlugQueryHookResult = ReturnType<typeof usePagesBySlugQuery>;
+export type PagesBySlugLazyQueryHookResult = ReturnType<typeof usePagesBySlugLazyQuery>;
+export type PagesBySlugSuspenseQueryHookResult = ReturnType<typeof usePagesBySlugSuspenseQuery>;
+export type PagesBySlugQueryResult = Apollo.QueryResult<PagesBySlugQuery, PagesBySlugQueryVariables>;

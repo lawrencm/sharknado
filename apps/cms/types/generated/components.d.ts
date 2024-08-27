@@ -31,6 +31,17 @@ export interface ElementsButton extends Schema.Component {
   };
 }
 
+export interface ContentText extends Schema.Component {
+  collectionName: 'components_content_texts';
+  info: {
+    displayName: 'Text';
+    icon: 'layer';
+  };
+  attributes: {
+    text: Attribute.Blocks;
+  };
+}
+
 export interface ContentPageHero extends Schema.Component {
   collectionName: 'components_content_page_heroes';
   info: {
@@ -78,6 +89,7 @@ declare module '@strapi/types' {
     export interface Components {
       'elements.link': ElementsLink;
       'elements.button': ElementsButton;
+      'content.text': ContentText;
       'content.page-hero': ContentPageHero;
       'content.call-to-action': ContentCallToAction;
       'content.blog-listing': ContentBlogListing;

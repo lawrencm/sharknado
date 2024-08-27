@@ -444,8 +444,20 @@ export interface ApiPagePage extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     body: Attribute.DynamicZone<
-      ['content.page-hero', 'content.call-to-action', 'content.blog-listing']
+      [
+        'content.page-hero',
+        'content.call-to-action',
+        'content.blog-listing',
+        'content.text'
+      ]
     >;
+    parent: Attribute.Relation<'api::page.page', 'manyToOne', 'api::page.page'>;
+    children: Attribute.Relation<
+      'api::page.page',
+      'oneToMany',
+      'api::page.page'
+    >;
+    slug: Attribute.UID<'api::page.page', 'title'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

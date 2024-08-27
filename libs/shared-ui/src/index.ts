@@ -1,3 +1,4 @@
+export * from './ExitDraftButton/ExitDraftButton';
 export * from './SearchResultsToolbar/SearchResultsToolbar';
 export * from './CallToAction/CallToAction';
 export * from './Blogs/BlogList/BlogList';

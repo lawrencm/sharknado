@@ -5,6 +5,32 @@ export default () => ({
   navigation: {
     enabled: true,
     config: {
+      //     contentTypes: ['api::page.page'],
+      //     additionalFields: [
+      //       'audience',
+      //       { name: 'position', type: 'string', label: 'My custom field' },
+      //       {
+      //         name: 'logo',
+      //         type: {
+      //           name: 'string',
+      //           url: 'string',
+      //           mime: 'string',
+      //           width: 10,
+      //           height: 20,
+      //           previewUrl: 'string',
+      //         },
+      //       },
+      //     ],
+
+      //     contentTypesNameFields: {
+      //       'api::page.page': ['title'],
+      //     },
+      //     pathDefaultFields: {
+      //       'api::page.page': ['slug'],
+      //     },
+      //     cascadeMenuAttached: true,
+      //     allowedLevels: 2,
+
       gql: {
         navigationItemRelated: ['Pages'],
       },
@@ -15,6 +41,26 @@ export default () => ({
     config: {
       // set this to true if you want to enable the playground in production
       playgroundAlways: false,
+    },
+  },
+
+  'preview-button': {
+    config: {
+      contentTypes: [
+        {
+          uid: 'api::page.page',
+          draft: {
+            url: 'http://localhost:3000/api/draft',
+            query: {
+              type: 'page',
+              slug: '{slug}',
+            },
+          },
+          published: {
+            url: 'http://localhost:3000/{slug}',
+          },
+        },
+      ],
     },
   },
 

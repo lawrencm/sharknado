@@ -20,8 +20,25 @@
       "components": [
         "content.page-hero",
         "content.call-to-action",
-        "content.blog-listing"
+        "content.blog-listing",
+        "content.text"
       ]
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::page.page",
+      "inversedBy": "children"
+    },
+    "children": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::page.page",
+      "mappedBy": "parent"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
     }
   }
 }
