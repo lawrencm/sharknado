@@ -2,6 +2,10 @@ import { config } from 'process';
 import { gql } from '@apollo/client';
 
 export default () => ({
+  'rte-test': {
+    enabled: true,
+    resolve: './src/plugins/rte-test',
+  },
   navigation: {
     enabled: true,
     config: {

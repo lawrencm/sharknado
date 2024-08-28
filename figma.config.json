@@ -1,0 +1,5 @@
+{
+  "codeConnect": {
+    "include": ["libs/shared-ui/src/**/*.{tsx,jsx}"]
+  }
+}
