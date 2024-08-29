@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '../button';
+import { Button } from '../shadcn/button';
 
 export function ExitDraftButton() {
   const handleExitDraft = async () => {

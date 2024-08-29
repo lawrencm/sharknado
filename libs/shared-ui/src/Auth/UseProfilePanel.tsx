@@ -1,8 +1,8 @@
 'use client';
 import { Avatar, AvatarFallback } from '@radix-ui/react-avatar';
 import { useSession } from 'next-auth/react';
-import { AvatarImage } from '../avatar';
-import { Card } from '../card';
+import { AvatarImage } from '../shadcn/avatar';
+import { Card } from '../shadcn/card';
 
 const UseProfilePanel = () => {
   const { data: session } = useSession();

@@ -34,7 +34,7 @@ module.exports = {
         darkslategray: '#012922',
         tomato: '#ff5d5d',
         yellow: '#FFB01C',
-
+        darktheme: '#012922',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',

@@ -1,7 +1,7 @@
 'use client';
 
 import { CircleUser } from 'lucide-react';
-import { Button } from '../button';
+import { Button } from '../shadcn/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,10 +9,10 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '../dropdown-menu';
+} from '../shadcn/dropdown-menu';
 import styles from './UserMenu.module.css';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import { Avatar, AvatarFallback, AvatarImage } from '../avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '../shadcn/avatar';
 
 export function UserMenu() {
   const { data: session, status } = useSession();

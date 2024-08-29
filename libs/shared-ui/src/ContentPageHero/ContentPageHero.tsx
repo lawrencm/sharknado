@@ -1,5 +1,5 @@
 import { ComponentContentPageHero } from '@sharknado/cms-api';
-import { Button } from '../button';
+import { Button } from '../shadcn/button';
 
 export interface ContentPageHeroProps extends ComponentContentPageHero {
   navigation: React.ReactNode;
@@ -16,24 +16,30 @@ const ContentPageHero: React.FC<ContentPageHeroProps> = ({
   const bgImageUrl = `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${background_image?.data?.attributes?.url}`;
 
   return (
-    <div className="flex flex-col items-center ml-auto mr-auto h-96 max-w-screen-xl my-4 rounded-2xl md overflow-hidden">
+    <div className="flex flex-col items-center ml-auto mr-auto  max-w-screen-xl my-4 rounded-2xl md overflow-hidden">
       <div
-        className="relative h-[400px] bg-cover bg-center flex items-center justify-center text-center w-full"
+        className="relative  bg-cover bg-center flex items-center h-[450px] justify-center text-center w-full"
         style={{ backgroundImage: `url(${bgImageUrl})` }}
       >
         <div className="absolute inset-0 w-auto text-white z-10 max-h-1">
           {navigation}
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-slate-900/50 to-slate-900"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-darktheme/30 via-darktheme/50 to-darktheme"></div>
 
-        <div className="relative z-10 h-full flex flex-col items-center justify-center pt-16">
+        <div className="relative z-10 h-full flex flex-col items-center justify-center pt-24">
           {subtitle && (
-            <p className="my-4 text-sm md:text-sm text-gray-200">{subtitle}</p>
+            <p className="my-4 text-sm md:text-sm text-gray-200 drop-shadow-md">
+              {subtitle}
+            </p>
           )}
-          <h1 className="text-4xl md:text-5xl uppercase font-bold text-white">
+          <h1 className="text-4xl md:text-5xl uppercase font-bold text-white drop-shadow-md">
             {title}
           </h1>
-          {text && <p className="my-8 max-w-[800px] text-white">{text}</p>}
+          {text && (
+            <p className="my-8 max-w-[800px] text-white drop-shadow-md">
+              {text}
+            </p>
+          )}
           {buttons &&
             buttons.map((button, idx) => (
               <Button
@@ -47,7 +53,7 @@ const ContentPageHero: React.FC<ContentPageHeroProps> = ({
             ))}
         </div>
       </div>
-      <div className="bg-slate-800 flex w-full py-2 px-4">
+      <div className="bg-darktheme flex w-full py-2 px-4">
         <div className="flex flex-col items-start justify-center w-full">
           <p className="text-white text-sm">
             Saw a shark? Report sightings to the water police.

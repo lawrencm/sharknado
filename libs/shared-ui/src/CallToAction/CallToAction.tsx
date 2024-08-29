@@ -1,7 +1,7 @@
 'use Strict';
 import { ComponentContentCallToAction } from '@sharknado/cms-api';
 import Image from 'next/image';
-import { Button } from '../button';
+import { Button } from '../shadcn/button';
 import {
   Card,
   CardContent,
@@ -9,7 +9,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '../card';
+} from '../shadcn/card';
 import React from 'react';
 
 export function CallToAction({

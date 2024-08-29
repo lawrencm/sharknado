@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "emitDecoratorMetadata": true
+  },
+  "exclude": ["components/**/*.spec.ts", "components/**/*.test.ts"],
+  "include": [
+    "../../libs/shared-ui/src/**/*.stories.ts",
+    "../../libs/shared-ui/src/**/*.stories.js",
+    "../../libs/shared-ui/src/**/*.stories.jsx", 
+    "../../libs/shared-ui/src/**/*.stories.tsx",
+    "../../libs/shared-ui/src/**/*.stories.mdx",
+    ".storybook/*.js",
+    ".storybook/*.ts",
+    "../../libs/shared-ui/src/**/*.stories.ts"
+  ]
+}

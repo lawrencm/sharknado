@@ -13,9 +13,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '../select';
+} from '../shadcn/select';
 import { GridIcon, ListIcon } from 'lucide-react';
-import { Switch } from '../switch';
+import { Switch } from '../shadcn/switch';
 // import { GridIcon, ListIcon } from '@shadcn/icons'; // Import the icons from ShadCN
 
 interface SearchResultsToolbarProps {

@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from '../card';
+import { Card, CardContent, CardHeader, CardTitle } from '../shadcn/card';
 
 interface BlogListItemProps {
   layout: 'grid' | 'list';

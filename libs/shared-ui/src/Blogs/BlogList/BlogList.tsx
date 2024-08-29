@@ -6,7 +6,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from '../../card';
+} from '../../shadcn/card';
 
 interface BlogListProps {
   data: BlogpostEntity[];

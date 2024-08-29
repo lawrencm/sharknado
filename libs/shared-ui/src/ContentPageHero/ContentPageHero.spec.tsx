@@ -1,69 +1,71 @@
+import '@testing-library/jest-dom'; // for extended matchers like toBeInTheDocument
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
-
-import '@testing-library/jest-dom';
-
-import { ContentPageHero } from './ContentPageHero';
 import React from 'react';
+import { ContentPageHero } from './ContentPageHero';
 
-jest.mock('../button', () => ({
-  Button: ({ children }: { children: React.ReactNode }) => (
-    <button>{children}</button>
-  ),
-}));
-
-describe('ContentPageHero Component', () => {
-  const mockData = {
-    title: 'Test Title',
-    subtitle: 'Test Subtitle',
-    background_image: {
-      data: {
-        attributes: {
-          url: 'test-image.jpg',
-        },
+// Mock data for testing purposes
+const mockProps = {
+  title: 'Save the Sharks!',
+  subtitle: 'Join our conservation efforts.',
+  text: 'Your support helps protect shark populations around the world.',
+  background_image: {
+    data: {
+      attributes: {
+        url: '/images/shark-banner.jpg',
       },
     },
-    buttons: [
-      { variant: 'primary', label: 'Button 1' },
-      { variant: 'secondary', label: 'Button 2' },
-    ],
-    text: 'Some descriptive text.',
-  };
+  },
+  buttons: [
+    { label: 'Donate Now', variant: 'primary' },
+    { label: 'Learn More', variant: 'secondary' },
+  ],
+  navigation: <div>Mock Navigation</div>,
+};
 
+describe('ContentPageHero', () => {
   beforeEach(() => {
-    process.env.NEXT_PUBLIC_IMAGE_BASE_URL = 'http://example.com/';
+    process.env.NEXT_PUBLIC_IMAGE_BASE_URL = 'https://example.com';
   });
 
-  test('renders without crashing', () => {
-    render(<ContentPageHero {...mockData} />);
+  it('renders the title, subtitle, and text', () => {
+    render(<ContentPageHero {...mockProps} />);
+
+    expect(screen.getByText(mockProps.title)).toBeInTheDocument();
+    expect(screen.getByText(mockProps.subtitle)).toBeInTheDocument();
+    expect(screen.getByText(mockProps.text)).toBeInTheDocument();
   });
 
-  test('displays correct title and subtitle', () => {
-    render(<ContentPageHero {...mockData} />);
+  it('displays the correct background image', () => {
+    render(<ContentPageHero {...mockProps} />);
 
-    expect(screen.getByText('Test Title')).toBeInTheDocument();
-    expect(screen.getByText('Test Subtitle')).toBeInTheDocument();
-  });
+    const bgImageUrl = `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${mockProps.background_image.data.attributes.url}`;
+    const backgroundElement = screen.getByText(mockProps.title).closest('div');
 
-  test('applies correct background image', () => {
-    render(<ContentPageHero {...mockData} />);
-    const divElement = screen.getByRole('banner'); // custom role for the hero section
-
-    expect(divElement).toHaveStyle(
-      `backgroundImage: url(http://example.com/test-image.jpg)`
+    expect(backgroundElement).toHaveStyle(
+      `background-image: url(${bgImageUrl})`
     );
   });
 
-  test('renders provided text', () => {
-    render(<ContentPageHero {...mockData} />);
+  it('renders navigation component correctly', () => {
+    render(<ContentPageHero {...mockProps} />);
 
-    expect(screen.getByText('Some descriptive text.')).toBeInTheDocument();
+    expect(screen.getByText('Mock Navigation')).toBeInTheDocument();
   });
 
-  test('renders buttons with correct labels', () => {
-    render(<ContentPageHero {...mockData} />);
+  it('renders buttons correctly', () => {
+    render(<ContentPageHero {...mockProps} />);
 
-    expect(screen.getByText('Button 1')).toBeInTheDocument();
-    expect(screen.getByText('Button 2')).toBeInTheDocument();
+    mockProps.buttons.forEach((button) => {
+      expect(screen.getByText(button.label)).toBeInTheDocument();
+    });
+  });
+
+  it('renders additional static content', () => {
+    render(<ContentPageHero {...mockProps} />);
+
+    expect(
+      screen.getByText('Saw a shark? Report sightings to the water police.')
+    ).toBeInTheDocument();
+    expect(screen.getByText('Call 9442 8600 now')).toBeInTheDocument();
   });
 });
