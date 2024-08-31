@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_content_monitoring_activities_panels",
+  "info": {
+    "displayName": "MonitoringActivitiesPanel",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "batchSize": {
+      "type": "integer"
+    }
+  }
+}

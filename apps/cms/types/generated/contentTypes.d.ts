@@ -362,112 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiBlogpostBlogpost extends Schema.CollectionType {
-  collectionName: 'blogposts';
-  info: {
-    singularName: 'blogpost';
-    pluralName: 'blogposts';
-    displayName: 'blogpost';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    slug: Attribute.UID<'api::blogpost.blogpost', 'title'>;
-    description: Attribute.Text;
-    author: Attribute.String;
-    body: Attribute.RichText;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::blogpost.blogpost',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::blogpost.blogpost',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiGlobalTopNavigationGlobalTopNavigation
-  extends Schema.SingleType {
-  collectionName: 'global_top_navigations';
-  info: {
-    singularName: 'global-top-navigation';
-    pluralName: 'global-top-navigations';
-    displayName: 'Global top Navigation';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Attribute.Required;
-    Links: Attribute.Component<'elements.link', true>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::global-top-navigation.global-top-navigation',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::global-top-navigation.global-top-navigation',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiPagePage extends Schema.CollectionType {
-  collectionName: 'pages';
-  info: {
-    singularName: 'page';
-    pluralName: 'pages';
-    displayName: 'Page';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    body: Attribute.DynamicZone<
-      [
-        'content.page-hero',
-        'content.call-to-action',
-        'content.blog-listing',
-        'content.text'
-      ]
-    >;
-    parent: Attribute.Relation<'api::page.page', 'manyToOne', 'api::page.page'>;
-    children: Attribute.Relation<
-      'api::page.page',
-      'oneToMany',
-      'api::page.page'
-    >;
-    slug: Attribute.UID<'api::page.page', 'title'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -1106,6 +1000,152 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBlogpostBlogpost extends Schema.CollectionType {
+  collectionName: 'blogposts';
+  info: {
+    singularName: 'blogpost';
+    pluralName: 'blogposts';
+    displayName: 'blogpost';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    slug: Attribute.UID<'api::blogpost.blogpost', 'title'>;
+    description: Attribute.Text;
+    author: Attribute.String;
+    body: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::blogpost.blogpost',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::blogpost.blogpost',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGlobalTopNavigationGlobalTopNavigation
+  extends Schema.SingleType {
+  collectionName: 'global_top_navigations';
+  info: {
+    singularName: 'global-top-navigation';
+    pluralName: 'global-top-navigations';
+    displayName: 'Global top Navigation';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required;
+    Links: Attribute.Component<'elements.link', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::global-top-navigation.global-top-navigation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::global-top-navigation.global-top-navigation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMonitoringActivityMonitoringActivity
+  extends Schema.CollectionType {
+  collectionName: 'monitoring_activities';
+  info: {
+    singularName: 'monitoring-activity';
+    pluralName: 'monitoring-activities';
+    displayName: 'MonitoringActivity';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    location: Attribute.String & Attribute.Required;
+    details: Attribute.String & Attribute.Required;
+    type: Attribute.Enumeration<
+      ['Tagged Shark', 'Shark Sighting', 'Whale Carcass']
+    > &
+      Attribute.Required;
+    species: Attribute.String;
+    datetime: Attribute.DateTime & Attribute.Required;
+    additionalInfo: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::monitoring-activity.monitoring-activity',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::monitoring-activity.monitoring-activity',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPagePage extends Schema.CollectionType {
+  collectionName: 'pages';
+  info: {
+    singularName: 'page';
+    pluralName: 'pages';
+    displayName: 'Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    body: Attribute.DynamicZone<
+      [
+        'content.page-hero',
+        'content.call-to-action',
+        'content.blog-listing',
+        'content.text',
+        'content.monitoring-activities-panel'
+      ]
+    >;
+    parent: Attribute.Relation<'api::page.page', 'manyToOne', 'api::page.page'>;
+    children: Attribute.Relation<
+      'api::page.page',
+      'oneToMany',
+      'api::page.page'
+    >;
+    slug: Attribute.UID<'api::page.page', 'title'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1116,9 +1156,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::blogpost.blogpost': ApiBlogpostBlogpost;
-      'api::global-top-navigation.global-top-navigation': ApiGlobalTopNavigationGlobalTopNavigation;
-      'api::page.page': ApiPagePage;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -1131,6 +1168,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::blogpost.blogpost': ApiBlogpostBlogpost;
+      'api::global-top-navigation.global-top-navigation': ApiGlobalTopNavigationGlobalTopNavigation;
+      'api::monitoring-activity.monitoring-activity': ApiMonitoringActivityMonitoringActivity;
+      'api::page.page': ApiPagePage;
     }
   }
 }

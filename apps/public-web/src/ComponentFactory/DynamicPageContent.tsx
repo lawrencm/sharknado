@@ -25,6 +25,8 @@ const DynamicPageContent = async ({ pageId }: DynamicPageContentProps) => {
     variables: { id: pageId },
   });
 
+  console.log(data.page?.data?.attributes?.body);
+
   const bodyComponents = data?.page?.data?.attributes?.body;
 
   return (
@@ -47,6 +49,7 @@ const DynamicPageContent = async ({ pageId }: DynamicPageContentProps) => {
           ) : null;
         }
 
+        console.log('DynamicPageContent', comp);
         return comp ? (
           <DynamicComponentRenderer
             key={comp.__typename ? `${comp.__typename}-${idx}` : idx}

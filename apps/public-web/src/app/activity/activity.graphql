@@ -1,0 +1,72 @@
+query GetActivities($pageSize: Int, $publicationState: PublicationState) {
+  monitoringActivities(
+    sort: "datetime:desc"
+    pagination: { pageSize: $pageSize }
+    publicationState: $publicationState
+  ) {
+    data {
+      ...MonitoringActivity
+    }
+    meta {
+      pagination {
+        total
+        page
+        pageSize
+        pageCount
+      }
+    }
+  }
+}
+
+query MonitoringActivity($id: ID) {
+  monitoringActivity(id: $id) {
+    data {
+      ...MonitoringActivity
+    }
+  }
+}
+
+fragment MonitoringActivity on MonitoringActivityEntity {
+  id
+  attributes {
+    location
+    details
+    type
+    species
+    datetime
+    additionalInfo
+    publishedAt
+  }
+}
+
+mutation CreateMonitoringActivity(
+  $location: String
+  $details: String
+  $type: ENUM_MONITORINGACTIVITY_TYPE
+  $species: String
+  $datetime: DateTime
+  $additionalInfo: String
+) {
+  createMonitoringActivity(
+    data: {
+      location: $location
+      details: $details
+      species: $species
+      datetime: $datetime
+      additionalInfo: $additionalInfo
+      type: $type
+    }
+  ) {
+    data {
+      ...MonitoringActivity
+    }
+  }
+}
+
+mutation UpdateMonitoringActivity($id: ID!, $data: MonitoringActivityInput!) {
+  updateMonitoringActivity(id: $id, data: $data) {
+    data {
+      ...MonitoringActivity
+    }
+  }
+}

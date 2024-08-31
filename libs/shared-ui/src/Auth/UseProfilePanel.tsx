@@ -13,7 +13,7 @@ const UseProfilePanel = () => {
 
   return (
     <Card className="mb-6">
-      {/* <div className="flex items-center p-4">
+      <div className="flex items-center p-4">
         <Avatar className="rounded-full overflow-hidden w-[75px]">
           <AvatarImage src={session?.user?.image ?? ''} />
           <AvatarFallback>CN</AvatarFallback>
@@ -32,7 +32,7 @@ const UseProfilePanel = () => {
             {session.user.phone_number}
           </p>
         </div>
-      </div> */}
+      </div>
     </Card>
   );
 };

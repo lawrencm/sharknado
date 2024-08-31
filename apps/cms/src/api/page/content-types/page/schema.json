@@ -21,7 +21,8 @@
         "content.page-hero",
         "content.call-to-action",
         "content.blog-listing",
-        "content.text"
+        "content.text",
+        "content.monitoring-activities-panel"
       ]
     },
     "parent": {

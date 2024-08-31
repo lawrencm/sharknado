@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "monitoring_activities",
+  "info": {
+    "singularName": "monitoring-activity",
+    "pluralName": "monitoring-activities",
+    "displayName": "MonitoringActivity"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "details": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Tagged Shark",
+        "Shark Sighting",
+        "Whale Carcass"
+      ],
+      "required": true
+    },
+    "species": {
+      "type": "string"
+    },
+    "datetime": {
+      "type": "datetime",
+      "required": true
+    },
+    "additionalInfo": {
+      "type": "string"
+    }
+  }
+}

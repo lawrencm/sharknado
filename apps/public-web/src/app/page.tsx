@@ -10,7 +10,6 @@ export default function Index() {
   return (
     <>
       <DynamicPageContent pageId="1" />
-
       <div className="wrapper pt-16">
         <div className="container mx-auto prose">
           <h1>Welcome to Sharknado Showdown</h1>

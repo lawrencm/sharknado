@@ -27,6 +27,7 @@ const DynamicComponentRenderer: FC<Props> = ({ typeName, componentProps }) => {
     return <div>Unknown component type: {typeName}</div>;
   }
 
+  // console.log('DynamicComponentRenderer', typeName, componentProps);
   const ComponentContent = <DynamicComponent {...componentProps} />;
 
   return useClient ? (

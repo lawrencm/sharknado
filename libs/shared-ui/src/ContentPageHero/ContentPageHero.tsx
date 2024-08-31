@@ -16,9 +16,10 @@ const ContentPageHero: React.FC<ContentPageHeroProps> = ({
   const bgImageUrl = `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${background_image?.data?.attributes?.url}`;
 
   return (
-    <div className="flex flex-col items-center ml-auto mr-auto  max-w-screen-xl my-4 rounded-2xl md overflow-hidden">
+    // container flex w-full mx-auto
+    <div className="container flex flex-col items-center mx-auto w-full  my-4 rounded-2xl md overflow-hidden ">
       <div
-        className="relative  bg-cover bg-center flex items-center h-[450px] justify-center text-center w-full"
+        className="relative  bg-cover bg-center flex items-center h-[450px] justify-center text-center w-full "
         style={{ backgroundImage: `url(${bgImageUrl})` }}
       >
         <div className="absolute inset-0 w-auto text-white z-10 max-h-1">

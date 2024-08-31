@@ -57,6 +57,18 @@ export interface ContentPageHero extends Schema.Component {
   };
 }
 
+export interface ContentMonitoringActivitiesPanel extends Schema.Component {
+  collectionName: 'components_content_monitoring_activities_panels';
+  info: {
+    displayName: 'MonitoringActivitiesPanel';
+    icon: 'bulletList';
+  };
+  attributes: {
+    Title: Attribute.String;
+    batchSize: Attribute.Integer;
+  };
+}
+
 export interface ContentCallToAction extends Schema.Component {
   collectionName: 'components_content_call_to_actions';
   info: {
@@ -91,6 +103,7 @@ declare module '@strapi/types' {
       'elements.button': ElementsButton;
       'content.text': ContentText;
       'content.page-hero': ContentPageHero;
+      'content.monitoring-activities-panel': ContentMonitoringActivitiesPanel;
       'content.call-to-action': ContentCallToAction;
       'content.blog-listing': ContentBlogListing;
     }

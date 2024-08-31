@@ -77,10 +77,10 @@ export default async function RootLayout({
                   Dashboard
                 </Link>
                 <Link
-                  href="#"
+                  href="/activity"
                   className="text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  Orders
+                  Activity
                 </Link>
                 <Link
                   href="#"

@@ -125,6 +125,13 @@ export type ComponentContentCallToActionButtonsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
+export type ComponentContentMonitoringActivitiesPanel = {
+  __typename?: 'ComponentContentMonitoringActivitiesPanel';
+  Title?: Maybe<Scalars['String']['output']>;
+  batchSize?: Maybe<Scalars['Int']['output']>;
+  id: Scalars['ID']['output'];
+};
+
 export type ComponentContentPageHero = {
   __typename?: 'ComponentContentPageHero';
   background_image?: Maybe<UploadFileEntityResponse>;
@@ -140,6 +147,12 @@ export type ComponentContentPageHeroButtonsArgs = {
   filters?: InputMaybe<ComponentElementsButtonFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ComponentContentText = {
+  __typename?: 'ComponentContentText';
+  id: Scalars['ID']['output'];
+  text?: Maybe<Scalars['JSON']['output']>;
 };
 
 export type ComponentElementsButton = {
@@ -221,6 +234,12 @@ export enum Enum_Componentelementsbutton_Variant {
   Secondary = 'secondary'
 }
 
+export enum Enum_Monitoringactivity_Type {
+  SharkSighting = 'Shark_Sighting',
+  TaggedShark = 'Tagged_Shark',
+  WhaleCarcass = 'Whale_Carcass'
+}
+
 export type Error = {
   __typename?: 'Error';
   code: Scalars['String']['output'];
@@ -258,7 +277,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type GenericMorph = Blogpost | ComponentContentBlogListing | ComponentContentCallToAction | ComponentContentPageHero | ComponentElementsButton | ComponentElementsLink | GlobalTopNavigation | I18NLocale | Page | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Blogpost | ComponentContentBlogListing | ComponentContentCallToAction | ComponentContentMonitoringActivitiesPanel | ComponentContentPageHero | ComponentContentText | ComponentElementsButton | ComponentElementsLink | GlobalTopNavigation | I18NLocale | MonitoringActivity | Page | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type GlobalTopNavigation = {
   __typename?: 'GlobalTopNavigation';
@@ -404,11 +423,68 @@ export type JsonFilterInput = {
   startsWith?: InputMaybe<Scalars['JSON']['input']>;
 };
 
+export type MonitoringActivity = {
+  __typename?: 'MonitoringActivity';
+  additionalInfo?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  datetime: Scalars['DateTime']['output'];
+  details: Scalars['String']['output'];
+  location: Scalars['String']['output'];
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  species?: Maybe<Scalars['String']['output']>;
+  type: Enum_Monitoringactivity_Type;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type MonitoringActivityEntity = {
+  __typename?: 'MonitoringActivityEntity';
+  attributes?: Maybe<MonitoringActivity>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type MonitoringActivityEntityResponse = {
+  __typename?: 'MonitoringActivityEntityResponse';
+  data?: Maybe<MonitoringActivityEntity>;
+};
+
+export type MonitoringActivityEntityResponseCollection = {
+  __typename?: 'MonitoringActivityEntityResponseCollection';
+  data: Array<MonitoringActivityEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type MonitoringActivityFiltersInput = {
+  additionalInfo?: InputMaybe<StringFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<MonitoringActivityFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  datetime?: InputMaybe<DateTimeFilterInput>;
+  details?: InputMaybe<StringFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  location?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<MonitoringActivityFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<MonitoringActivityFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  species?: InputMaybe<StringFilterInput>;
+  type?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type MonitoringActivityInput = {
+  additionalInfo?: InputMaybe<Scalars['String']['input']>;
+  datetime?: InputMaybe<Scalars['DateTime']['input']>;
+  details?: InputMaybe<Scalars['String']['input']>;
+  location?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  species?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<Enum_Monitoringactivity_Type>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
   createBlogpost?: Maybe<BlogpostEntityResponse>;
+  createMonitoringActivity?: Maybe<MonitoringActivityEntityResponse>;
   createPage?: Maybe<PageEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -418,6 +494,7 @@ export type Mutation = {
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deleteBlogpost?: Maybe<BlogpostEntityResponse>;
   deleteGlobalTopNavigation?: Maybe<GlobalTopNavigationEntityResponse>;
+  deleteMonitoringActivity?: Maybe<MonitoringActivityEntityResponse>;
   deletePage?: Maybe<PageEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -439,6 +516,7 @@ export type Mutation = {
   updateBlogpost?: Maybe<BlogpostEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updateGlobalTopNavigation?: Maybe<GlobalTopNavigationEntityResponse>;
+  updateMonitoringActivity?: Maybe<MonitoringActivityEntityResponse>;
   updatePage?: Maybe<PageEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -459,6 +537,11 @@ export type MutationChangePasswordArgs = {
 
 export type MutationCreateBlogpostArgs = {
   data: BlogpostInput;
+};
+
+
+export type MutationCreateMonitoringActivityArgs = {
+  data: MonitoringActivityInput;
 };
 
 
@@ -488,6 +571,11 @@ export type MutationCreateUsersPermissionsUserArgs = {
 
 
 export type MutationDeleteBlogpostArgs = {
+  id: Scalars['ID']['input'];
+};
+
+
+export type MutationDeleteMonitoringActivityArgs = {
   id: Scalars['ID']['input'];
 };
 
@@ -571,6 +659,12 @@ export type MutationUpdateFileInfoArgs = {
 
 export type MutationUpdateGlobalTopNavigationArgs = {
   data: GlobalTopNavigationInput;
+};
+
+
+export type MutationUpdateMonitoringActivityArgs = {
+  data: MonitoringActivityInput;
+  id: Scalars['ID']['input'];
 };
 
 
@@ -670,7 +764,7 @@ export type PageChildrenArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type PageBodyDynamicZone = ComponentContentBlogListing | ComponentContentCallToAction | ComponentContentPageHero | Error;
+export type PageBodyDynamicZone = ComponentContentBlogListing | ComponentContentCallToAction | ComponentContentMonitoringActivitiesPanel | ComponentContentPageHero | ComponentContentText | Error;
 
 export type PageEntity = {
   __typename?: 'PageEntity';
@@ -745,6 +839,8 @@ export type Query = {
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
+  monitoringActivities?: Maybe<MonitoringActivityEntityResponseCollection>;
+  monitoringActivity?: Maybe<MonitoringActivityEntityResponse>;
   page?: Maybe<PageEntityResponse>;
   pages?: Maybe<PageEntityResponseCollection>;
   renderNavigation: Array<Maybe<NavigationItem>>;
@@ -787,6 +883,19 @@ export type QueryI18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryMonitoringActivitiesArgs = {
+  filters?: InputMaybe<MonitoringActivityFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryMonitoringActivityArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>;
 };
 
 
@@ -1281,6 +1390,43 @@ export type GlobalHeaderNavigationQueryVariables = Exact<{ [key: string]: never;
 
 export type GlobalHeaderNavigationQuery = { __typename?: 'Query', renderNavigation: Array<{ __typename?: 'NavigationItem', id: number, title: string, path?: string | null, related?: { __typename?: 'NavigationItemRelatedData', id: number } | null } | null> };
 
+export type GetActivitiesQueryVariables = Exact<{
+  pageSize?: InputMaybe<Scalars['Int']['input']>;
+  publicationState?: InputMaybe<PublicationState>;
+}>;
+
+
+export type GetActivitiesQuery = { __typename?: 'Query', monitoringActivities?: { __typename?: 'MonitoringActivityEntityResponseCollection', data: Array<{ __typename?: 'MonitoringActivityEntity', id?: string | null, attributes?: { __typename?: 'MonitoringActivity', location: string, details: string, type: Enum_Monitoringactivity_Type, species?: string | null, datetime: any, additionalInfo?: string | null, publishedAt?: any | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number } } } | null };
+
+export type MonitoringActivityQueryVariables = Exact<{
+  id?: InputMaybe<Scalars['ID']['input']>;
+}>;
+
+
+export type MonitoringActivityQuery = { __typename?: 'Query', monitoringActivity?: { __typename?: 'MonitoringActivityEntityResponse', data?: { __typename?: 'MonitoringActivityEntity', id?: string | null, attributes?: { __typename?: 'MonitoringActivity', location: string, details: string, type: Enum_Monitoringactivity_Type, species?: string | null, datetime: any, additionalInfo?: string | null, publishedAt?: any | null } | null } | null } | null };
+
+export type MonitoringActivityFragment = { __typename?: 'MonitoringActivityEntity', id?: string | null, attributes?: { __typename?: 'MonitoringActivity', location: string, details: string, type: Enum_Monitoringactivity_Type, species?: string | null, datetime: any, additionalInfo?: string | null, publishedAt?: any | null } | null };
+
+export type CreateMonitoringActivityMutationVariables = Exact<{
+  location?: InputMaybe<Scalars['String']['input']>;
+  details?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<Enum_Monitoringactivity_Type>;
+  species?: InputMaybe<Scalars['String']['input']>;
+  datetime?: InputMaybe<Scalars['DateTime']['input']>;
+  additionalInfo?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type CreateMonitoringActivityMutation = { __typename?: 'Mutation', createMonitoringActivity?: { __typename?: 'MonitoringActivityEntityResponse', data?: { __typename?: 'MonitoringActivityEntity', id?: string | null, attributes?: { __typename?: 'MonitoringActivity', location: string, details: string, type: Enum_Monitoringactivity_Type, species?: string | null, datetime: any, additionalInfo?: string | null, publishedAt?: any | null } | null } | null } | null };
+
+export type UpdateMonitoringActivityMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+  data: MonitoringActivityInput;
+}>;
+
+
+export type UpdateMonitoringActivityMutation = { __typename?: 'Mutation', updateMonitoringActivity?: { __typename?: 'MonitoringActivityEntityResponse', data?: { __typename?: 'MonitoringActivityEntity', id?: string | null, attributes?: { __typename?: 'MonitoringActivity', location: string, details: string, type: Enum_Monitoringactivity_Type, species?: string | null, datetime: any, additionalInfo?: string | null, publishedAt?: any | null } | null } | null } | null };
+
 export type BlogpostsQueryVariables = Exact<{
   page?: InputMaybe<Scalars['Int']['input']>;
   pageSize?: InputMaybe<Scalars['Int']['input']>;
@@ -1313,7 +1459,7 @@ export type PageQueryVariables = Exact<{
 }>;
 
 
-export type PageQuery = { __typename?: 'Query', page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, body?: Array<{ __typename?: 'ComponentContentBlogListing', id: string, view?: Enum_Componentcontentbloglisting_View | null, number_of_cols?: number | null, items_per_page?: number | null } | { __typename?: 'ComponentContentCallToAction', title?: string | null, subtitle?: string | null, text?: string | null, id: string, buttons?: Array<{ __typename?: 'ComponentElementsButton', id: string, label?: string | null, variant: Enum_Componentelementsbutton_Variant, url?: string | null, open_in_new_window?: boolean | null } | null> | null, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', alternativeText?: string | null, caption?: string | null, url: string, name: string } | null } | null } | null } | { __typename?: 'ComponentContentPageHero', id: string, title?: string | null, subtitle?: string | null, text?: string | null, background_image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, alternativeText?: string | null, caption?: string | null, url: string } | null } | null } | null, buttons?: Array<{ __typename?: 'ComponentElementsButton', id: string, label?: string | null, variant: Enum_Componentelementsbutton_Variant, url?: string | null, open_in_new_window?: boolean | null } | null> | null } | { __typename?: 'Error' } | null> | null } | null } | null } | null };
+export type PageQuery = { __typename?: 'Query', page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, body?: Array<{ __typename?: 'ComponentContentBlogListing', id: string, view?: Enum_Componentcontentbloglisting_View | null, number_of_cols?: number | null, items_per_page?: number | null } | { __typename?: 'ComponentContentCallToAction', id: string, title?: string | null, subtitle?: string | null, text?: string | null, buttons?: Array<{ __typename?: 'ComponentElementsButton', id: string, label?: string | null, variant: Enum_Componentelementsbutton_Variant, url?: string | null, open_in_new_window?: boolean | null } | null> | null, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', alternativeText?: string | null, caption?: string | null, url: string, name: string } | null } | null } | null } | { __typename?: 'ComponentContentMonitoringActivitiesPanel', Title?: string | null, batchSize?: number | null } | { __typename?: 'ComponentContentPageHero', id: string, title?: string | null, subtitle?: string | null, text?: string | null, background_image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, alternativeText?: string | null, caption?: string | null, url: string } | null } | null } | null, buttons?: Array<{ __typename?: 'ComponentElementsButton', id: string, label?: string | null, variant: Enum_Componentelementsbutton_Variant, url?: string | null, open_in_new_window?: boolean | null } | null> | null } | { __typename?: 'ComponentContentText' } | { __typename?: 'Error' } | null> | null } | null } | null } | null };
 
 export type PagesBySlugQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -1321,9 +1467,95 @@ export type PagesBySlugQueryVariables = Exact<{
 }>;
 
 
-export type PagesBySlugQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, body?: Array<{ __typename?: 'ComponentContentBlogListing' } | { __typename?: 'ComponentContentCallToAction' } | { __typename?: 'ComponentContentPageHero', id: string, title?: string | null, subtitle?: string | null, text?: string | null, background_image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, alternativeText?: string | null, caption?: string | null, url: string } | null } | null } | null, buttons?: Array<{ __typename?: 'ComponentElementsButton', id: string, label?: string | null, variant: Enum_Componentelementsbutton_Variant, url?: string | null, open_in_new_window?: boolean | null } | null> | null } | { __typename?: 'Error' } | null> | null } | null }> } | null };
+export type PagesBySlugQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, body?: Array<{ __typename?: 'ComponentContentBlogListing', id: string, view?: Enum_Componentcontentbloglisting_View | null, number_of_cols?: number | null, items_per_page?: number | null } | { __typename?: 'ComponentContentCallToAction', id: string, title?: string | null, subtitle?: string | null, text?: string | null, buttons?: Array<{ __typename?: 'ComponentElementsButton', id: string, label?: string | null, variant: Enum_Componentelementsbutton_Variant, url?: string | null, open_in_new_window?: boolean | null } | null> | null, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', alternativeText?: string | null, caption?: string | null, url: string, name: string } | null } | null } | null } | { __typename?: 'ComponentContentMonitoringActivitiesPanel', Title?: string | null, batchSize?: number | null } | { __typename?: 'ComponentContentPageHero', id: string, title?: string | null, subtitle?: string | null, text?: string | null, background_image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, alternativeText?: string | null, caption?: string | null, url: string } | null } | null } | null, buttons?: Array<{ __typename?: 'ComponentElementsButton', id: string, label?: string | null, variant: Enum_Componentelementsbutton_Variant, url?: string | null, open_in_new_window?: boolean | null } | null> | null } | { __typename?: 'ComponentContentText' } | { __typename?: 'Error' } | null> | null } | null }> } | null };
 
+export type PageHeroFragmentFragment = { __typename?: 'ComponentContentPageHero', id: string, title?: string | null, subtitle?: string | null, text?: string | null, background_image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, alternativeText?: string | null, caption?: string | null, url: string } | null } | null } | null, buttons?: Array<{ __typename?: 'ComponentElementsButton', id: string, label?: string | null, variant: Enum_Componentelementsbutton_Variant, url?: string | null, open_in_new_window?: boolean | null } | null> | null };
 
+export type CallToActionFragmentFragment = { __typename?: 'ComponentContentCallToAction', id: string, title?: string | null, subtitle?: string | null, text?: string | null, buttons?: Array<{ __typename?: 'ComponentElementsButton', id: string, label?: string | null, variant: Enum_Componentelementsbutton_Variant, url?: string | null, open_in_new_window?: boolean | null } | null> | null, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', alternativeText?: string | null, caption?: string | null, url: string, name: string } | null } | null } | null };
+
+export type BlogListingFragmentFragment = { __typename?: 'ComponentContentBlogListing', id: string, view?: Enum_Componentcontentbloglisting_View | null, number_of_cols?: number | null, items_per_page?: number | null };
+
+export type MonitoringActivitiesPanelFragmentFragment = { __typename?: 'ComponentContentMonitoringActivitiesPanel', Title?: string | null, batchSize?: number | null };
+
+export const MonitoringActivityFragmentDoc = gql`
+    fragment MonitoringActivity on MonitoringActivityEntity {
+  id
+  attributes {
+    location
+    details
+    type
+    species
+    datetime
+    additionalInfo
+    publishedAt
+  }
+}
+    `;
+export const PageHeroFragmentFragmentDoc = gql`
+    fragment PageHeroFragment on ComponentContentPageHero {
+  id
+  title
+  subtitle
+  background_image {
+    data {
+      attributes {
+        name
+        alternativeText
+        caption
+        url
+      }
+    }
+  }
+  buttons {
+    id
+    label
+    variant
+    url
+    open_in_new_window
+  }
+  text
+}
+    `;
+export const CallToActionFragmentFragmentDoc = gql`
+    fragment CallToActionFragment on ComponentContentCallToAction {
+  id
+  title
+  subtitle
+  text
+  buttons {
+    id
+    label
+    variant
+    url
+    open_in_new_window
+  }
+  image {
+    data {
+      attributes {
+        alternativeText
+        caption
+        url
+        name
+      }
+      id
+    }
+  }
+}
+    `;
+export const BlogListingFragmentFragmentDoc = gql`
+    fragment BlogListingFragment on ComponentContentBlogListing {
+  id
+  view
+  number_of_cols
+  items_per_page
+}
+    `;
+export const MonitoringActivitiesPanelFragmentFragmentDoc = gql`
+    fragment MonitoringActivitiesPanelFragment on ComponentContentMonitoringActivitiesPanel {
+  Title
+  batchSize
+}
+    `;
 export const GlobalHeaderNavigationDocument = gql`
     query GlobalHeaderNavigation {
   renderNavigation(navigationIdOrSlug: "1", menuOnly: true) {
@@ -1368,6 +1600,181 @@ export type GlobalHeaderNavigationQueryHookResult = ReturnType<typeof useGlobalH
 export type GlobalHeaderNavigationLazyQueryHookResult = ReturnType<typeof useGlobalHeaderNavigationLazyQuery>;
 export type GlobalHeaderNavigationSuspenseQueryHookResult = ReturnType<typeof useGlobalHeaderNavigationSuspenseQuery>;
 export type GlobalHeaderNavigationQueryResult = Apollo.QueryResult<GlobalHeaderNavigationQuery, GlobalHeaderNavigationQueryVariables>;
+export const GetActivitiesDocument = gql`
+    query GetActivities($pageSize: Int, $publicationState: PublicationState) {
+  monitoringActivities(
+    sort: "datetime:desc"
+    pagination: {pageSize: $pageSize}
+    publicationState: $publicationState
+  ) {
+    data {
+      ...MonitoringActivity
+    }
+    meta {
+      pagination {
+        total
+        page
+        pageSize
+        pageCount
+      }
+    }
+  }
+}
+    ${MonitoringActivityFragmentDoc}`;
+
+/**
+ * __useGetActivitiesQuery__
+ *
+ * To run a query within a React component, call `useGetActivitiesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetActivitiesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetActivitiesQuery({
+ *   variables: {
+ *      pageSize: // value for 'pageSize'
+ *      publicationState: // value for 'publicationState'
+ *   },
+ * });
+ */
+export function useGetActivitiesQuery(baseOptions?: Apollo.QueryHookOptions<GetActivitiesQuery, GetActivitiesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetActivitiesQuery, GetActivitiesQueryVariables>(GetActivitiesDocument, options);
+      }
+export function useGetActivitiesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetActivitiesQuery, GetActivitiesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetActivitiesQuery, GetActivitiesQueryVariables>(GetActivitiesDocument, options);
+        }
+export function useGetActivitiesSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetActivitiesQuery, GetActivitiesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetActivitiesQuery, GetActivitiesQueryVariables>(GetActivitiesDocument, options);
+        }
+export type GetActivitiesQueryHookResult = ReturnType<typeof useGetActivitiesQuery>;
+export type GetActivitiesLazyQueryHookResult = ReturnType<typeof useGetActivitiesLazyQuery>;
+export type GetActivitiesSuspenseQueryHookResult = ReturnType<typeof useGetActivitiesSuspenseQuery>;
+export type GetActivitiesQueryResult = Apollo.QueryResult<GetActivitiesQuery, GetActivitiesQueryVariables>;
+export const MonitoringActivityDocument = gql`
+    query MonitoringActivity($id: ID) {
+  monitoringActivity(id: $id) {
+    data {
+      ...MonitoringActivity
+    }
+  }
+}
+    ${MonitoringActivityFragmentDoc}`;
+
+/**
+ * __useMonitoringActivityQuery__
+ *
+ * To run a query within a React component, call `useMonitoringActivityQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMonitoringActivityQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMonitoringActivityQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useMonitoringActivityQuery(baseOptions?: Apollo.QueryHookOptions<MonitoringActivityQuery, MonitoringActivityQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<MonitoringActivityQuery, MonitoringActivityQueryVariables>(MonitoringActivityDocument, options);
+      }
+export function useMonitoringActivityLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MonitoringActivityQuery, MonitoringActivityQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<MonitoringActivityQuery, MonitoringActivityQueryVariables>(MonitoringActivityDocument, options);
+        }
+export function useMonitoringActivitySuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<MonitoringActivityQuery, MonitoringActivityQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<MonitoringActivityQuery, MonitoringActivityQueryVariables>(MonitoringActivityDocument, options);
+        }
+export type MonitoringActivityQueryHookResult = ReturnType<typeof useMonitoringActivityQuery>;
+export type MonitoringActivityLazyQueryHookResult = ReturnType<typeof useMonitoringActivityLazyQuery>;
+export type MonitoringActivitySuspenseQueryHookResult = ReturnType<typeof useMonitoringActivitySuspenseQuery>;
+export type MonitoringActivityQueryResult = Apollo.QueryResult<MonitoringActivityQuery, MonitoringActivityQueryVariables>;
+export const CreateMonitoringActivityDocument = gql`
+    mutation CreateMonitoringActivity($location: String, $details: String, $type: ENUM_MONITORINGACTIVITY_TYPE, $species: String, $datetime: DateTime, $additionalInfo: String) {
+  createMonitoringActivity(
+    data: {location: $location, details: $details, species: $species, datetime: $datetime, additionalInfo: $additionalInfo, type: $type}
+  ) {
+    data {
+      ...MonitoringActivity
+    }
+  }
+}
+    ${MonitoringActivityFragmentDoc}`;
+export type CreateMonitoringActivityMutationFn = Apollo.MutationFunction<CreateMonitoringActivityMutation, CreateMonitoringActivityMutationVariables>;
+
+/**
+ * __useCreateMonitoringActivityMutation__
+ *
+ * To run a mutation, you first call `useCreateMonitoringActivityMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateMonitoringActivityMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createMonitoringActivityMutation, { data, loading, error }] = useCreateMonitoringActivityMutation({
+ *   variables: {
+ *      location: // value for 'location'
+ *      details: // value for 'details'
+ *      type: // value for 'type'
+ *      species: // value for 'species'
+ *      datetime: // value for 'datetime'
+ *      additionalInfo: // value for 'additionalInfo'
+ *   },
+ * });
+ */
+export function useCreateMonitoringActivityMutation(baseOptions?: Apollo.MutationHookOptions<CreateMonitoringActivityMutation, CreateMonitoringActivityMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateMonitoringActivityMutation, CreateMonitoringActivityMutationVariables>(CreateMonitoringActivityDocument, options);
+      }
+export type CreateMonitoringActivityMutationHookResult = ReturnType<typeof useCreateMonitoringActivityMutation>;
+export type CreateMonitoringActivityMutationResult = Apollo.MutationResult<CreateMonitoringActivityMutation>;
+export type CreateMonitoringActivityMutationOptions = Apollo.BaseMutationOptions<CreateMonitoringActivityMutation, CreateMonitoringActivityMutationVariables>;
+export const UpdateMonitoringActivityDocument = gql`
+    mutation UpdateMonitoringActivity($id: ID!, $data: MonitoringActivityInput!) {
+  updateMonitoringActivity(id: $id, data: $data) {
+    data {
+      ...MonitoringActivity
+    }
+  }
+}
+    ${MonitoringActivityFragmentDoc}`;
+export type UpdateMonitoringActivityMutationFn = Apollo.MutationFunction<UpdateMonitoringActivityMutation, UpdateMonitoringActivityMutationVariables>;
+
+/**
+ * __useUpdateMonitoringActivityMutation__
+ *
+ * To run a mutation, you first call `useUpdateMonitoringActivityMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateMonitoringActivityMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateMonitoringActivityMutation, { data, loading, error }] = useUpdateMonitoringActivityMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useUpdateMonitoringActivityMutation(baseOptions?: Apollo.MutationHookOptions<UpdateMonitoringActivityMutation, UpdateMonitoringActivityMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateMonitoringActivityMutation, UpdateMonitoringActivityMutationVariables>(UpdateMonitoringActivityDocument, options);
+      }
+export type UpdateMonitoringActivityMutationHookResult = ReturnType<typeof useUpdateMonitoringActivityMutation>;
+export type UpdateMonitoringActivityMutationResult = Apollo.MutationResult<UpdateMonitoringActivityMutation>;
+export type UpdateMonitoringActivityMutationOptions = Apollo.BaseMutationOptions<UpdateMonitoringActivityMutation, UpdateMonitoringActivityMutationVariables>;
 export const BlogpostsDocument = gql`
     query Blogposts($page: Int, $pageSize: Int, $filters: BlogpostFiltersInput, $sort: [String]) {
   blogposts(
@@ -1535,59 +1942,10 @@ export const PageDocument = gql`
       attributes {
         title
         body {
-          ... on ComponentContentPageHero {
-            id
-            title
-            subtitle
-            background_image {
-              data {
-                attributes {
-                  name
-                  alternativeText
-                  caption
-                  url
-                }
-              }
-            }
-            buttons {
-              id
-              label
-              variant
-              url
-              open_in_new_window
-            }
-            text
-          }
-          ... on ComponentContentCallToAction {
-            title
-            subtitle
-            text
-            buttons {
-              id
-              label
-              variant
-              url
-              open_in_new_window
-            }
-            image {
-              data {
-                attributes {
-                  alternativeText
-                  caption
-                  url
-                  name
-                }
-                id
-              }
-            }
-            id
-          }
-          ... on ComponentContentBlogListing {
-            id
-            view
-            number_of_cols
-            items_per_page
-          }
+          ...PageHeroFragment
+          ...CallToActionFragment
+          ...BlogListingFragment
+          ...MonitoringActivitiesPanelFragment
         }
         createdAt
         updatedAt
@@ -1596,7 +1954,10 @@ export const PageDocument = gql`
     }
   }
 }
-    `;
+    ${PageHeroFragmentFragmentDoc}
+${CallToActionFragmentFragmentDoc}
+${BlogListingFragmentFragmentDoc}
+${MonitoringActivitiesPanelFragmentFragmentDoc}`;
 
 /**
  * __usePageQuery__
@@ -1641,30 +2002,10 @@ export const PagesBySlugDocument = gql`
       attributes {
         title
         body {
-          ... on ComponentContentPageHero {
-            id
-            title
-            subtitle
-            text
-            background_image {
-              data {
-                id
-                attributes {
-                  name
-                  alternativeText
-                  caption
-                  url
-                }
-              }
-            }
-            buttons {
-              id
-              label
-              variant
-              url
-              open_in_new_window
-            }
-          }
+          ...PageHeroFragment
+          ...CallToActionFragment
+          ...BlogListingFragment
+          ...MonitoringActivitiesPanelFragment
         }
         slug
         createdAt
@@ -1675,7 +2016,10 @@ export const PagesBySlugDocument = gql`
     }
   }
 }
-    `;
+    ${PageHeroFragmentFragmentDoc}
+${CallToActionFragmentFragmentDoc}
+${BlogListingFragmentFragmentDoc}
+${MonitoringActivitiesPanelFragmentFragmentDoc}`;
 
 /**
  * __usePagesBySlugQuery__

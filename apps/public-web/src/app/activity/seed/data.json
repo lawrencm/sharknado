@@ -1,0 +1,322 @@
+[
+  {
+    "location": "Bickley Point, Rottnest",
+    "details": "1 white shark detected 1 time",
+    "type": "Tagged_Shark",
+    "species": "White Shark",
+    "datetime": "2024-08-29T11:36:00Z",
+    "additionalInfo": "Tagged white shark detected at Bickley Point, Rottnest receiver at 11:36hrs 9/08."
+  },
+  {
+    "location": "Lefthanders",
+    "details": "1 white shark detected 1 time",
+    "type": "Tagged_Shark",
+    "species": "White Shark",
+    "datetime": "2024-08-27T09:30:00Z",
+    "additionalInfo": "Tagged white shark detected at Lefthanders receiver at 9:30hrs 7/08."
+  },
+  {
+    "location": "Scarborough Beach BEN Sign, Perth Metro",
+    "details": "1 white shark sighting reported",
+    "type": "Shark_Sighting",
+    "species": "White Shark",
+    "datetime": "2024-08-29T10:26:00Z",
+    "additionalInfo": "Public report: 6.0m white shark sighted 4km offshore. Reported at 11:59hrs."
+  },
+  {
+    "location": "Naturaliste BEN Sign, East of Cape Naturaliste",
+    "details": "1 whale carcass sighting reported",
+    "type": "Whale_Carcass",
+    "species": "Humpback Whale",
+    "datetime": "2024-08-28T13:45:00Z",
+    "additionalInfo": "Whale carcass sighted floating near East of Cape Naturaliste."
+  },
+  {
+    "location": "Cottesloe Beach, Perth Metro",
+    "details": "1 white shark sighting reported",
+    "type": "Shark_Sighting",
+    "species": "White Shark",
+    "datetime": "2024-08-29T14:10:00Z",
+    "additionalInfo": "White shark sighted 500m offshore at Cottesloe Beach. Reported at 14:10hrs."
+  },
+  {
+    "location": "Rottnest Island",
+    "details": "1 tagged shark detected 2 times",
+    "type": "Tagged_Shark",
+    "species": "Tiger Shark",
+    "datetime": "2024-08-26T07:20:00Z",
+    "additionalInfo": "Tagged tiger shark detected at Rottnest Island receiver at 07:20hrs and 07:45hrs 26/08."
+  },
+  {
+    "location": "Yallingup Beach",
+    "details": "1 white shark sighting reported",
+    "type": "Shark_Sighting",
+    "species": "White Shark",
+    "datetime": "2024-08-30T09:50:00Z",
+    "additionalInfo": "White shark sighted by a surfer 200m offshore at Yallingup Beach."
+  },
+  {
+    "location": "Margaret River",
+    "details": "1 whale carcass washed ashore",
+    "type": "Whale_Carcass",
+    "species": "Humpback Whale",
+    "datetime": "2024-08-25T16:30:00Z",
+    "additionalInfo": "A large humpback whale carcass was found washed ashore at Margaret River beach."
+  },
+  {
+    "location": "Busselton Jetty",
+    "details": "1 white shark detected 3 times",
+    "type": "Tagged_Shark",
+    "species": "White Shark",
+    "datetime": "2024-08-28T08:00:00Z",
+    "additionalInfo": "Tagged white shark detected at Busselton Jetty receiver at 08:00hrs, 08:15hrs, and 08:30hrs 28/08."
+  },
+  {
+    "location": "Esperance, Twilight Beach",
+    "details": "1 white shark sighting reported",
+    "type": "Shark_Sighting",
+    "species": "White Shark",
+    "datetime": "2024-08-30T11:00:00Z",
+    "additionalInfo": "White shark sighted by lifeguards near Twilight Beach in Esperance."
+  },
+  {
+    "location": "City Beach, Perth Metro",
+    "details": "2 white sharks detected 3 times",
+    "type": "Tagged_Shark",
+    "species": "White Shark",
+    "datetime": "2024-08-29T15:30:00Z",
+    "additionalInfo": "Tagged white sharks detected at City Beach receiver at 15:30hrs, 15:45hrs, and 16:00hrs 29/08."
+  },
+  {
+    "location": "Trigg Beach, Perth Metro",
+    "details": "1 white shark sighting reported",
+    "type": "Shark_Sighting",
+    "species": "White Shark",
+    "datetime": "2024-08-29T17:10:00Z",
+    "additionalInfo": "Public report: White shark sighted 100m offshore at Trigg Beach. Reported at 17:10hrs."
+  },
+  {
+    "location": "Meelup Beach, Dunsborough",
+    "details": "1 whale carcass sighting reported",
+    "type": "Whale_Carcass",
+    "species": "Southern Right Whale",
+    "datetime": "2024-08-28T12:00:00Z",
+    "additionalInfo": "A dead Southern Right Whale was spotted floating near Meelup Beach."
+  },
+  {
+    "location": "Two Rocks, Perth Metro",
+    "details": "1 white shark detected 2 times",
+    "type": "Tagged_Shark",
+    "species": "White Shark",
+    "datetime": "2024-08-30T06:30:00Z",
+    "additionalInfo": "Tagged white shark detected at Two Rocks receiver at 06:30hrs and 06:45hrs 30/08."
+  },
+  {
+    "location": "Hamelin Bay",
+    "details": "1 white shark sighting reported",
+    "type": "Shark_Sighting",
+    "species": "White Shark",
+    "datetime": "2024-08-30T10:15:00Z",
+    "additionalInfo": "White shark sighted near a boat off the coast of Hamelin Bay at 10:15hrs."
+  },
+  {
+    "location": "Cable Beach, Broome",
+    "details": "1 whale carcass washed ashore",
+    "type": "Whale_Carcass",
+    "species": "Humpback Whale",
+    "datetime": "2024-08-27T14:20:00Z",
+    "additionalInfo": "A large humpback whale carcass was discovered washed ashore at Cable Beach."
+  },
+  {
+    "location": "Quinns Rocks, Perth Metro",
+    "details": "1 white shark detected 1 time",
+    "type": "Tagged_Shark",
+    "species": "White Shark",
+    "datetime": "2024-08-29T08:30:00Z",
+    "additionalInfo": "Tagged white shark detected at Quinns Rocks receiver at 08:30hrs 29/08."
+  },
+  {
+    "location": "Geraldton, Town Beach",
+    "details": "1 white shark sighting reported",
+    "type": "Shark_Sighting",
+    "species": "White Shark",
+    "datetime": "2024-08-29T09:00:00Z",
+    "additionalInfo": "Public report: White shark sighted close to shore at Town Beach in Geraldton at 09:00hrs."
+  },
+  {
+    "location": "Coral Bay",
+    "details": "1 whale carcass reported offshore",
+    "type": "Whale_Carcass",
+    "species": "Bryde's Whale",
+    "datetime": "2024-08-28T11:00:00Z",
+    "additionalInfo": "Whale carcass of a Bryde's Whale spotted offshore near Coral Bay."
+  },
+  {
+    "location": "Mandurah",
+    "details": "1 white shark detected 1 time",
+    "type": "Tagged_Shark",
+    "species": "White Shark",
+    "datetime": "2024-08-29T07:45:00Z",
+    "additionalInfo": "Tagged white shark detected at Mandurah receiver at 07:45hrs 29/08."
+  },
+  {
+    "location": "Mullaloo Beach, Perth Metro",
+    "details": "1 white shark sighting reported",
+    "type": "Shark_Sighting",
+    "species": "White Shark",
+    "datetime": "2024-08-30T09:20:00Z",
+    "additionalInfo": "White shark sighted 200m offshore at Mullaloo Beach. Reported at 09:20hrs."
+  },
+  {
+    "location": "Secret Harbour, Perth Metro",
+    "details": "1 white shark detected 1 time",
+    "type": "Tagged_Shark",
+    "species": "White Shark",
+    "datetime": "2024-08-30T08:00:00Z",
+    "additionalInfo": "Tagged white shark detected at Secret Harbour receiver at 08:00hrs 30/08."
+  },
+  {
+    "location": "Mindarie, Perth Metro",
+    "details": "1 white shark detected 2 times",
+    "type": "Tagged_Shark",
+    "species": "White Shark",
+    "datetime": "2024-08-30T07:45:00Z",
+    "additionalInfo": "Tagged white shark detected at Mindarie receiver at 07:45hrs and 08:00hrs 30/08."
+  },
+  {
+    "location": "Rottnest Island, Salmon Bay",
+    "details": "1 whale carcass washed ashore",
+    "type": "Whale_Carcass",
+    "species": "Humpback Whale",
+    "datetime": "2024-08-29T16:30:00Z",
+    "additionalInfo": "A dead humpback whale washed ashore at Salmon Bay, Rottnest Island."
+  },
+  {
+    "location": "Fremantle, South Beach",
+    "details": "1 white shark sighting reported",
+    "type": "Shark_Sighting",
+    "species": "White Shark",
+    "datetime": "2024-08-29T10:30:00Z",
+    "additionalInfo": "White shark sighted 150m offshore at South Beach, Fremantle at 10:30hrs."
+  },
+  {
+    "location": "Shark Bay",
+    "details": "1 white shark detected 1 time",
+    "type": "Tagged_Shark",
+    "species": "White Shark",
+    "datetime": "2024-08-29T06:50:00Z",
+    "additionalInfo": "Tagged white shark detected at Shark Bay receiver at 06:50hrs 29/08."
+  },
+  {
+    "location": "Albany, Middleton Beach",
+    "details": "1 white shark sighting reported",
+    "type": "Shark_Sighting",
+    "species": "White Shark",
+    "datetime": "2024-08-29T09:00:00Z",
+    "additionalInfo": "White shark sighted by swimmers near Middleton Beach in Albany at 09:00hrs."
+  },
+  {
+    "location": "Jurien Bay",
+    "details": "1 whale carcass reported offshore",
+    "type": "Whale_Carcass",
+    "species": "Minke Whale",
+    "datetime": "2024-08-28T12:30:00Z",
+    "additionalInfo": "Minke whale carcass spotted drifting offshore near Jurien Bay."
+  },
+  {
+    "location": "Mandurah, Falcon Beach",
+    "details": "1 white shark detected 1 time",
+    "type": "Tagged_Shark",
+    "species": "White Shark",
+    "datetime": "2024-08-30T07:00:00Z",
+    "additionalInfo": "Tagged white shark detected at Falcon Beach receiver at 07:00hrs 30/08."
+  },
+  {
+    "location": "Esperance, West Beach",
+    "details": "1 white shark sighting reported",
+    "type": "Shark_Sighting",
+    "species": "White Shark",
+    "datetime": "2024-08-30T08:30:00Z",
+    "additionalInfo": "White shark sighted near the shore at West Beach in Esperance at 08:30hrs."
+  },
+  {
+    "location": "Broome, Gantheaume Point",
+    "details": "1 whale carcass washed ashore",
+    "type": "Whale_Carcass",
+    "species": "Humpback Whale",
+    "datetime": "2024-08-27T15:00:00Z",
+    "additionalInfo": "A large humpback whale carcass washed ashore at Gantheaume Point in Broome."
+  },
+  {
+    "location": "Denmark, Ocean Beach",
+    "details": "1 white shark sighting reported",
+    "type": "Shark_Sighting",
+    "species": "White Shark",
+    "datetime": "2024-08-30T10:00:00Z",
+    "additionalInfo": "White shark sighted by surfers near Ocean Beach in Denmark at 10:00hrs."
+  },
+  {
+    "location": "Geraldton, Back Beach",
+    "details": "1 white shark detected 2 times",
+    "type": "Tagged_Shark",
+    "species": "White Shark",
+    "datetime": "2024-08-30T09:00:00Z",
+    "additionalInfo": "Tagged white shark detected at Back Beach receiver at 09:00hrs and 09:15hrs 30/08."
+  },
+  {
+    "location": "Exmouth, Bundegi Beach",
+    "details": "1 white shark sighting reported",
+    "type": "Shark_Sighting",
+    "species": "White Shark",
+    "datetime": "2024-08-29T14:45:00Z",
+    "additionalInfo": "White shark sighted near Bundegi Beach in Exmouth. Reported at 14:45hrs."
+  },
+  {
+    "location": "Bunbury, Koombana Bay",
+    "details": "1 whale carcass sighting reported",
+    "type": "Whale_Carcass",
+    "species": "Blue Whale",
+    "datetime": "2024-08-28T13:00:00Z",
+    "additionalInfo": "Carcass of a blue whale sighted floating in Koombana Bay, Bunbury."
+  },
+  {
+    "location": "Carnarvon, Pelican Point",
+    "details": "1 white shark detected 1 time",
+    "type": "Tagged_Shark",
+    "species": "White Shark",
+    "datetime": "2024-08-29T08:00:00Z",
+    "additionalInfo": "Tagged white shark detected at Pelican Point receiver in Carnarvon at 08:00hrs 29/08."
+  },
+  {
+    "location": "Lancelin Beach",
+    "details": "1 white shark sighting reported",
+    "type": "Shark_Sighting",
+    "species": "White Shark",
+    "datetime": "2024-08-30T07:15:00Z",
+    "additionalInfo": "White shark sighted close to shore at Lancelin Beach at 07:15hrs."
+  },
+  {
+    "location": "Augusta, Flinders Bay",
+    "details": "1 whale carcass sighting reported",
+    "type": "Whale_Carcass",
+    "species": "Southern Right Whale",
+    "datetime": "2024-08-28T11:30:00Z",
+    "additionalInfo": "Carcass of a Southern Right Whale reported floating in Flinders Bay, Augusta."
+  },
+  {
+    "location": "Rockingham, Palm Beach",
+    "details": "1 white shark detected 1 time",
+    "type": "Tagged_Shark",
+    "species": "White Shark",
+    "datetime": "2024-08-29T09:15:00Z",
+    "additionalInfo": "Tagged white shark detected at Palm Beach receiver in Rockingham at 09:15hrs 29/08."
+  },
+  {
+    "location": "Kalbarri, Red Bluff",
+    "details": "1 white shark sighting reported",
+    "type": "Shark_Sighting",
+    "species": "White Shark",
+    "datetime": "2024-08-29T16:00:00Z",
+    "additionalInfo": "White shark sighted near Red Bluff in Kalbarri. Reported at 16:00hrs."
+  }
+]

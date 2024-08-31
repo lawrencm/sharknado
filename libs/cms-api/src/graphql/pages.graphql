@@ -5,59 +5,10 @@ query Page($id: ID) {
       attributes {
         title
         body {
-          ... on ComponentContentPageHero {
-            id
-            title
-            subtitle
-            background_image {
-              data {
-                attributes {
-                  name
-                  alternativeText
-                  caption
-                  url
-                }
-              }
-            }
-            buttons {
-              id
-              label
-              variant
-              url
-              open_in_new_window
-            }
-            text
-          }
-          ... on ComponentContentCallToAction {
-            title
-            subtitle
-            text
-            buttons {
-              id
-              label
-              variant
-              url
-              open_in_new_window
-            }
-            image {
-              data {
-                attributes {
-                  alternativeText
-                  caption
-                  url
-                  name
-                }
-                id
-              }
-            }
-            id
-          }
-          ... on ComponentContentBlogListing {
-            id
-            view
-            number_of_cols
-            items_per_page
-          }
+          ...PageHeroFragment
+          ...CallToActionFragment
+          ...BlogListingFragment
+          ...MonitoringActivitiesPanelFragment
         }
         createdAt
         updatedAt
@@ -77,30 +28,10 @@ query PagesBySlug($slug: String, $publicationState: PublicationState) {
       attributes {
         title
         body {
-          ... on ComponentContentPageHero {
-            id
-            title
-            subtitle
-            text
-            background_image {
-              data {
-                id
-                attributes {
-                  name
-                  alternativeText
-                  caption
-                  url
-                }
-              }
-            }
-            buttons {
-              id
-              label
-              variant
-              url
-              open_in_new_window
-            }
-          }
+          ...PageHeroFragment
+          ...CallToActionFragment
+          ...BlogListingFragment
+          ...MonitoringActivitiesPanelFragment
         }
         slug
         createdAt
@@ -110,4 +41,65 @@ query PagesBySlug($slug: String, $publicationState: PublicationState) {
       id
     }
   }
+}
+
+fragment PageHeroFragment on ComponentContentPageHero {
+  id
+  title
+  subtitle
+  background_image {
+    data {
+      attributes {
+        name
+        alternativeText
+        caption
+        url
+      }
+    }
+  }
+  buttons {
+    id
+    label
+    variant
+    url
+    open_in_new_window
+  }
+  text
+}
+
+fragment CallToActionFragment on ComponentContentCallToAction {
+  id
+  title
+  subtitle
+  text
+  buttons {
+    id
+    label
+    variant
+    url
+    open_in_new_window
+  }
+  image {
+    data {
+      attributes {
+        alternativeText
+        caption
+        url
+        name
+      }
+      id
+    }
+  }
+}
+
+fragment BlogListingFragment on ComponentContentBlogListing {
+  id
+  view
+  number_of_cols
+  items_per_page
+}
+
+fragment MonitoringActivitiesPanelFragment on ComponentContentMonitoringActivitiesPanel {
+  Title
+  batchSize
 }

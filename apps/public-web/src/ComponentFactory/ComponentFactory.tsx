@@ -1,4 +1,5 @@
 import { ContentPageHero } from '@sharknado/shared-ui';
+import MonitoringActivitiesPanel from '../components/MonitoringActivitiesPanel/MonitoringActivitiesPanel';
 
 // Define a specific type for component props, which can be extended as needed.
 export type ComponentProps = {
@@ -13,6 +14,10 @@ type ComponentEntry = [any, boolean];
 // Initialize the components map with the defined type.
 const components: Map<string, ComponentEntry> = new Map([
   ['ComponentContentPageHero', [ContentPageHero, false]],
+  [
+    'ComponentContentMonitoringActivitiesPanel',
+    [MonitoringActivitiesPanel, true],
+  ],
   // ['ComponentContentCallToAction', [CallToAction, false]],
   // ['ComponentContentBlogListing', [BlogList, true]],
 ]);
